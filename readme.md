@@ -31,7 +31,7 @@ public class TestKpakpato {
 }
 ```
 
-## Contributing to Spring Data JPA##
+## Contributing to Kpakpato-api ##
 
 Here are some ways for you to get involved  :
 
