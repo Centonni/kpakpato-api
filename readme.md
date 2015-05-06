@@ -9,9 +9,24 @@ The primary goal of this project is to make it easier to build applications that
 
 ## Quick Start ##
 
-Fork this project or clone it, compile the source code and include the generated jar into your project libs.
-And here is a sample code for using this api.
+Download the jar though Maven:
 
+```xml
+
+<repositories>
+        <repository>
+            <id>kpakpato-build</id>
+            <name>kpakpato builds</name>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+        </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.centonni</groupId>
+  <artifactId>kpakpato-api</artifactId>
+  <version>1.0-SNAPSHOT</version>
+</dependency>
+```
 ```java
 public class TestKpakpato {
 
