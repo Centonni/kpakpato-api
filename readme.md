@@ -4,7 +4,7 @@ The primary goal of this project is to make it easier to build applications that
 
 ## Features ##
 
-* Implementation for accessing the [orange ci sms api](http://help.github.com/forking/).
+* Implementation for accessing the [orange ci sms api](http://www.orangepartner.com/SMS-CI-API).
 
 
 ## Quick Start ##
@@ -13,30 +13,28 @@ Download the jar though Maven:
 
 ```xml
 
-<repositories>
-        <repository>
-            <id>kpakpato-build</id>
-            <name>kpakpato builds</name>
-            <url>https://oss.sonatype.org/content/groups/public</url>
-        </repository>
-</repositories>
-
 <dependency>
   <groupId>com.centonni</groupId>
   <artifactId>kpakpato-api</artifactId>
   <version>1.0-SNAPSHOT</version>
 </dependency>
+
+<repositories>
+        <repository>
+            <id>kpakpato-snapshots</id>
+            <name>Kpakpato Snapshots</name>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+        </repository>
+</repositories>
+
 ```
 ```java
 public class TestKpakpato {
 
   public static void main(String[] args) throws Exception {
-    //create an instance of the orange api with your credentials
+    //create an instance of the orange api with your credentials, your authentication token is transparently retrieved here
         SmsAPI ssapi=new OrangeSmsAPI("your_client_id", "your_client_secret");
-    //you can retrieve your authentication token
-        AuthenticationToken token = ssapi.getToken();
 
-        System.out.println("**** "+token);
   //Create a message context that will be used to send your sms
         MessageContext context=new MessageContext("tel:+225senderAddress", "senderName", "your message here");
   //send a sms to your receiver
