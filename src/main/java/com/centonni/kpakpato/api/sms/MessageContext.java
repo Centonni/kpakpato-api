@@ -16,8 +16,9 @@
 package com.centonni.kpakpato.api.sms;
 
 /**
- *
- * @author Komi Serge Innocent <komi.innocent@gmail.com>
+ * A wrapper class that contain informations about the sms that will be sent
+ * 
+ * @author Komi Serge Innocent 
  */
 public class MessageContext {
 
@@ -25,6 +26,12 @@ public class MessageContext {
     private String senderName;
     private String message; 
 
+    /**
+     * Create an instance of {@link MessageContext}     * 
+     * @param senderAdress the sender address in the format tel:+225number
+     * @param senderName the sender name to display to receiver
+     * @param message the content of your message
+     */
     public MessageContext(String senderAdress, String senderName, String message) {
         this.senderAdress = senderAdress;
         this.senderName = senderName;

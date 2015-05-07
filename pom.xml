@@ -3,8 +3,44 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.centonni</groupId>
     <artifactId>kpakpato-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <packaging>jar</packaging>
+    <name>Kpakpato Api</name>  
+    <description>Library that handle sms api providers services</description>
+    <inceptionYear>2015</inceptionYear>
+    <url>https://github.com/Centonni/kpakpato-api</url>
+     
+    <developers>
+        <developer>
+            <id>centonni</id>
+            <name>Komi Serge Innocent</name>
+            <email>komi.innocent@gmail.com</email>
+            <url>http://centonni.com</url> 
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
+    <scm>
+        <url>https://github.com/Centonni/kpakpato-api</url>
+        <connection>scm:git:ssh://git@github.com/Centonni/kpakpato-api.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Centonni/kpakpato-api.git</developerConnection>
+    </scm>
+  
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+   
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
@@ -25,11 +61,6 @@
             <type>jar</type>
         </dependency>
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-    </properties>
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>

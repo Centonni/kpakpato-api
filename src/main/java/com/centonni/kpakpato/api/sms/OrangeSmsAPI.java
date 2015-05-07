@@ -27,6 +27,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+/**
+ * Default implementation of {@link SmsAPI} for orange ci sms api.
+ *
+ * @author Komi Serge Innocent 
+ */
 public final class OrangeSmsAPI implements SmsAPI {
 
     public final static String BASE_URL = "https://api.orange.com";
@@ -39,12 +44,23 @@ public final class OrangeSmsAPI implements SmsAPI {
 
     }
 
+    /**
+     * Creates a new {@link OrangeSmsAPI} instance for the given credentials, and make a call to retrieve
+     * the authorization token.
+     * 
+     * @param clientId the client id for using the sms api
+     * @param clientSecret the client secret for your application
+     */
     public OrangeSmsAPI(String clientId, String clientSecret) {
         this.clientId = clientId;
         this.clientSecret = clientSecret;
         token = getToken();
     }
 
+    /* 
+     * (non-Javadoc)
+     * @see com.centonni.SmsApi#getToken()
+     */
     @Override
     public AuthenticationToken getToken() {
 
@@ -78,15 +94,19 @@ public final class OrangeSmsAPI implements SmsAPI {
         return authenticationToken;
     }
 
+     /* 
+     * (non-Javadoc)
+     * @see com.centonni.SmsApi#sendSms(MessageContext message, String receiverAdress)
+     */
     @Override
     public boolean sendSms(MessageContext message, String receiverAdress) {
 
         String path = BASE_URL + "/" + "smsmessaging/v1/outbound/" + message.getSenderAdress() + "/requests";
 
-        String body = bodyToJSON(createMessageBody(message, receiverAdress)); 
-        
-        boolean state=false;
-        
+        String body = bodyToJSON(createMessageBody(message, receiverAdress));
+
+        boolean state = false;
+
         try {
 
             DefaultHttpClient httpClient = new DefaultHttpClient();
@@ -100,11 +120,11 @@ public final class OrangeSmsAPI implements SmsAPI {
             if (response.getStatusLine().getStatusCode() != 201) {
                 throw new RuntimeException("Failed : HTTP error code : "
                         + response.getStatusLine().getStatusCode());
-            }else{
-                state=true;
+            } else {
+                state = true;
                 final ObjectMapper objectMapper = new ObjectMapper();
-            MessageBody messageBody = objectMapper.readValue(response.getEntity().getContent(), MessageBody.class);
-                System.out.println(" $$$$ "+messageBody);
+                MessageBody messageBody = objectMapper.readValue(response.getEntity().getContent(), MessageBody.class);
+                System.out.println(" $$$$ " + messageBody);
 
             }
 
@@ -117,6 +137,10 @@ public final class OrangeSmsAPI implements SmsAPI {
         return state;
     }
 
+     /* 
+     * (non-Javadoc)
+     * @see com.centonni.SmsApi#sendSms(MessageContext message, String... receiverAdress)
+     */
     @Override
     public boolean sendSms(MessageContext message, String... receiverAdress) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

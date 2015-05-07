@@ -16,16 +16,8 @@ Download the jar though Maven:
 <dependency>
   <groupId>com.centonni</groupId>
   <artifactId>kpakpato-api</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0.0-RELEASE</version>
 </dependency>
-
-<repositories>
-        <repository>
-            <id>kpakpato-snapshots</id>
-            <name>Kpakpato Snapshots</name>
-            <url>https://oss.sonatype.org/content/groups/public</url>
-        </repository>
-</repositories>
 
 ```
 ```java

@@ -19,8 +19,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 
 /**
- *
- * @author Komi Serge Innocent <komi.innocent@gmail.com>
+ * This class contain the authorization informations retrieved with the client credentials.
+ *  
+ * @author Komi Serge Innocent 
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthenticationToken {
@@ -56,6 +57,10 @@ public class AuthenticationToken {
         return token_type+" "+access_token;
     }
     
+    /**
+     * 
+     * @return the {@link  Date} the authorization token will expire.
+     */
     public Date getExpireDate(){
         return new Date(new Long(expires_in));
     }

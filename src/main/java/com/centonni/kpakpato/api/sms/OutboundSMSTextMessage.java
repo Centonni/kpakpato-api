@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  *
- * @author Komi Serge Innocent <komi.innocent@gmail.com>
+ * @author Komi Serge Innocent 
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 class OutboundSMSTextMessage {
