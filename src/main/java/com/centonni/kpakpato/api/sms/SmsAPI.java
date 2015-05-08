@@ -15,6 +15,8 @@
  */
 package com.centonni.kpakpato.api.sms;
 
+import java.util.Date;
+
 /**
  * Interface that provide methods for dealing with sms provider apis
  * 
@@ -23,12 +25,17 @@ package com.centonni.kpakpato.api.sms;
 public interface SmsAPI {
 
     /**
-     * This method should return an instance of {@link AuthenticationToken} that basically contain
-     * the authorization token to acces the provider Api
+     * This method should return the authorization to acces the provider Api
      * @see AuthenticationToken
      * @return 
      */
-    AuthenticationToken getToken();
+    String getAuthorisationToken();
+    
+    /**
+     * Return the expiration date of the authorization token
+     * @return 
+     */
+    Date getAuthorisationTokenExpirationDate();
 
     /**
      * This method executes a request to the sms provider api to send message to a receiver

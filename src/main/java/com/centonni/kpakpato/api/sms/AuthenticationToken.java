@@ -24,7 +24,7 @@ import java.util.Date;
  * @author Komi Serge Innocent 
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class AuthenticationToken {
+class AuthenticationToken {
     private String token_type;
     private String access_token;
     private Integer expires_in;

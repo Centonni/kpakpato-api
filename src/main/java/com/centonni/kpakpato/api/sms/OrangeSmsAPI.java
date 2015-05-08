@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.http.HttpResponse;
@@ -57,12 +58,13 @@ public final class OrangeSmsAPI implements SmsAPI {
         token = getToken();
     }
 
-    /* 
-     * (non-Javadoc)
-     * @see com.centonni.SmsApi#getToken()
+    /**
+     * This method should return the authorization that basically contain
+     * the authorization token to acces the provider Api
+     * @see AuthenticationToken
+     * @return 
      */
-    @Override
-    public AuthenticationToken getToken() {
+    AuthenticationToken getToken() {
 
         String clientInfos = clientId + ":" + clientSecret;
         String body = "grant_type=client_credentials";
@@ -173,5 +175,23 @@ public final class OrangeSmsAPI implements SmsAPI {
         }
 
         return json;
+    }
+
+    /* 
+     * (non-Javadoc)
+     * @see com.centonni.SmsApi#getAuthorisationToken()
+     */
+    @Override
+    public String getAuthorisationToken() {
+        return token.getAuthorization();
+    }
+
+    /* 
+     * (non-Javadoc)
+     * @see com.centonni.SmsApi#getAuthorisationTokenExpirationDate()
+     */
+    @Override
+    public Date getAuthorisationTokenExpirationDate() {
+        return token.getExpireDate();
     }
 }
