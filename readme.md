@@ -1,5 +1,7 @@
 # Kpakpato-api #
 
+[![Build Status](https://travis-ci.org/Centonni/kpakpato-api.svg?branch=master)](https://travis-ci.org/Centonni/kpakpato-api)
+
 The primary goal of this project is to make it easier to build applications that use sms api technologies.
 
 ## Features ##
