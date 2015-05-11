@@ -41,7 +41,7 @@ public interface SmsAPI {
      * This method executes a request to the sms provider api to send message to a receiver
      * @see MessageContext
      * @param message the content of the message to send
-     * @param receiverAdress the receiver address in the format tel:+225number
+     * @param receiverAdress the receiver address in the format 225number
      * @return true if the sms was send succesfully
      */
     boolean sendSms(MessageContext message,String receiverAdress);
@@ -50,7 +50,7 @@ public interface SmsAPI {
      * This method executes a request to the sms provider api to send message to a list of receiver
      * @see MessageContext
      * @param message the content of the message to send
-     * @param receiverAdress the receiver address in the format tel:+225number
+     * @param receiverAdress the receiver address in the format 225number
      * @return true if the sms was send succesfully
      */
     boolean sendSms(MessageContext message, String... receiverAdress);

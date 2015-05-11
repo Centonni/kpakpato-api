@@ -102,10 +102,10 @@ public final class OrangeSmsAPI implements SmsAPI {
      */
     @Override
     public boolean sendSms(MessageContext message, String receiverAdress) {
-
+        String receiver="tel:+"+receiverAdress;
         String path = BASE_URL + "/" + "smsmessaging/v1/outbound/" + message.getSenderAdress() + "/requests";
 
-        String body = bodyToJSON(createMessageBody(message, receiverAdress));
+        String body = bodyToJSON(createMessageBody(message, receiver));
 
         boolean state = false;
 
@@ -126,8 +126,7 @@ public final class OrangeSmsAPI implements SmsAPI {
                 state = true;
                 final ObjectMapper objectMapper = new ObjectMapper();
                 MessageBody messageBody = objectMapper.readValue(response.getEntity().getContent(), MessageBody.class);
-                System.out.println(" $$$$ " + messageBody);
-
+               
             }
 
         } catch (JsonParseException e1) {

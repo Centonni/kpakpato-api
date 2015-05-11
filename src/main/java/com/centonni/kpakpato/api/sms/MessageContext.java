@@ -33,7 +33,7 @@ public class MessageContext {
      * @param message the content of your message
      */
     public MessageContext(String senderAdress, String senderName, String message) {
-        this.senderAdress = senderAdress;
+        this.senderAdress = "tel:+"+senderAdress;
         this.senderName = senderName;
         this.message = message; 
     }
@@ -43,7 +43,7 @@ public class MessageContext {
     }
 
     public void setSenderAdress(String senderAdress) {
-        this.senderAdress = senderAdress;
+        this.senderAdress = "tel:+"+senderAdress;
     }
 
     public String getSenderName() {
