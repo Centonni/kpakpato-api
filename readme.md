@@ -30,9 +30,9 @@ public class TestKpakpato {
         SmsAPI ssapi=new OrangeSmsAPI("your_client_id", "your_client_secret");
 
   //Create a message context that will be used to send your sms
-        MessageContext context=new MessageContext("tel:+225senderAddress", "senderName", "your message here");
+        MessageContext context=new MessageContext("+225senderAddress", "senderName", "your message here");
   //send a sms to your receiver
-        ssapi.sendSms(context, "tel:+225receiverAdress");
+        ssapi.sendSms(context, "+225receiverAdress");
 
     }
 }
