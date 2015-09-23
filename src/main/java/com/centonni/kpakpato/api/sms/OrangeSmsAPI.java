@@ -41,7 +41,7 @@ public final class OrangeSmsAPI implements SmsAPI {
     private String clientSecret;
     private AuthenticationToken token;
 
-    private OrangeSmsAPI() {
+    public OrangeSmsAPI() {
 
     }
 
@@ -65,7 +65,7 @@ public final class OrangeSmsAPI implements SmsAPI {
      * @return 
      */
     AuthenticationToken getToken() {
-
+        
         String clientInfos = clientId + ":" + clientSecret;
         String body = "grant_type=client_credentials";
         AuthenticationToken authenticationToken = null;
@@ -192,5 +192,48 @@ public final class OrangeSmsAPI implements SmsAPI {
     @Override
     public Date getAuthorisationTokenExpirationDate() {
         return token.getExpireDate();
+    }
+
+    @Override
+    public boolean sendSms(MessageContext message, String receiverAdress, String authorisationToken) {
+        String receiver="tel:+"+receiverAdress;
+        String path = BASE_URL + "/" + "smsmessaging/v1/outbound/" + message.getSenderAdress() + "/requests";
+
+        String body = bodyToJSON(createMessageBody(message, receiver));
+
+        boolean state = false;
+
+        try {
+
+            DefaultHttpClient httpClient = new DefaultHttpClient();
+            HttpPost postRequest = new HttpPost(path);
+            postRequest.setHeader("Authorization", authorisationToken);
+            StringEntity input = new StringEntity(body);
+            input.setContentType("application/json");
+            postRequest.setEntity(input);
+
+            HttpResponse response = httpClient.execute(postRequest);
+            if (response.getStatusLine().getStatusCode() != 201) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + response.getStatusLine().getStatusCode());
+            } else {
+                state = true;
+                final ObjectMapper objectMapper = new ObjectMapper();
+                MessageBody messageBody = objectMapper.readValue(response.getEntity().getContent(), MessageBody.class);
+               
+            }
+
+        } catch (JsonParseException e1) {
+            e1.printStackTrace();
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+
+        return state;
+    }
+
+    @Override
+    public boolean sendSms(MessageContext message, String authorisationToken, String... receiverAdress) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

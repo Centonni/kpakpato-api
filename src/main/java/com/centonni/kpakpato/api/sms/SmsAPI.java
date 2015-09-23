@@ -23,7 +23,7 @@ import java.util.Date;
  * @author Komi Serge Innocent 
  */
 public interface SmsAPI {
-
+     
     /**
      * This method should return the authorization to acces the provider Api
      * @see AuthenticationToken
@@ -45,6 +45,16 @@ public interface SmsAPI {
      * @return true if the sms was send succesfully
      */
     boolean sendSms(MessageContext message,String receiverAdress);
+    
+    /**
+     * This method executes a request to the sms provider api to send message to a receiver
+     * @see MessageContext
+     * @param message the content of the message to send
+     * @param receiverAdress the receiver address in the format 225number
+     * @param authorisationToken the authorisation token to access the api
+     * @return true if the sms was send succesfully
+     */
+    boolean sendSms(MessageContext message,String receiverAdress,String authorisationToken);
 
     /**
      * This method executes a request to the sms provider api to send message to a list of receiver
@@ -54,4 +64,14 @@ public interface SmsAPI {
      * @return true if the sms was send succesfully
      */
     boolean sendSms(MessageContext message, String... receiverAdress);
+    
+    /**
+     * This method executes a request to the sms provider api to send message to a list of receiver
+     * @param authorisationToken the authorisation token to access the api 
+     * @see MessageContext
+     * @param message the content of the message to send
+     * @param receiverAdress the receiver address in the format 225number
+     * @return true if the sms was send succesfully
+     */
+    boolean sendSms(MessageContext message,String authorisationToken, String... receiverAdress);
 }
