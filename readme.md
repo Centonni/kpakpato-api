@@ -18,7 +18,7 @@ Download the jar though Maven:
 <dependency>
   <groupId>com.centonni</groupId>
   <artifactId>kpakpato-api</artifactId>
-  <version>1.0.2-RELEASE</version>
+  <version>1.0.3-RELEASE</version>
 </dependency>
 
 ```
