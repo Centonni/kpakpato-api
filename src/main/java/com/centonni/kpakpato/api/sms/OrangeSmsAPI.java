@@ -18,7 +18,11 @@ package com.centonni.kpakpato.api.sms;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Base64;
 import java.util.Date;
 import java.util.logging.Level;
@@ -125,7 +129,7 @@ public final class OrangeSmsAPI implements SmsAPI {
             } else {
                 state = true;
                 final ObjectMapper objectMapper = new ObjectMapper();
-                MessageBody messageBody = objectMapper.readValue(response.getEntity().getContent(), MessageBody.class);
+                OutboundSMSMessageRequest messageBody = objectMapper.readValue(response.getEntity().getContent(), OutboundSMSMessageRequest.class);
                
             }
 
@@ -136,6 +140,36 @@ public final class OrangeSmsAPI implements SmsAPI {
         }
 
         return state;
+    }
+
+    // convert InputStream to String
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
     }
 
      /* 
