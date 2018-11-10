@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.centonni</groupId>
     <artifactId>kpakpato-api</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.4-RELEASE</version>
     <packaging>jar</packaging>
     <name>Kpakpato Api</name>  
     <description>Library that handle sms api providers services</description>
